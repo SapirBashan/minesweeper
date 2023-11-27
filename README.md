@@ -3,7 +3,12 @@
 Welcome to the React Minesweeper game! This project presents a classic rendition of 
 the popular Minesweeper game using React, offering an immersive gaming experience.
 
-##Demo
+## Demo
+
+
+
+https://github.com/SapirBashan/minesweeper/assets/99900812/5cad55ee-f77e-4e9f-b78e-81f7e7350ef0
+
 
 ## Introduction
 
@@ -111,10 +116,5 @@ This command will open the game in your default browser, allowing you to embark 
 - **Victory**: Successfully reveal all non-mine cells to emerge victorious.
 - **Defeat**: Revealing a mine ends the game.
 
-
-
-This project is licensed under the [MIT License](LICENSE), granting users the freedom to use, modify, and distribute the software within the stipulated terms.
-
----
 
 This detailed README provides an extensive overview of the React Minesweeper game, highlights its features, showcases the code structure, and demonstrates your proficiency as a developer. Feel free to tailor it further by adding more specific
