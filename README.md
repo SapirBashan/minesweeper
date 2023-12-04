@@ -9,6 +9,8 @@ the popular Minesweeper game using React, offering an immersive gaming experienc
 
 https://github.com/SapirBashan/minesweeper/assets/99900812/5cad55ee-f77e-4e9f-b78e-81f7e7350ef0
 
+## Play in the website
+https://sapir-minesweeper-game.netlify.app/
 
 ## Introduction
 
