@@ -49,6 +49,7 @@ const cellItemShape = {
   isFlagged: PropTypes.bool
 };
 
+//this is the type checking for the props of the cell
 Cell.propTypes = {
   value: PropTypes.objectOf(PropTypes.shape(cellItemShape)),
   onClick: PropTypes.func,

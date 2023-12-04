@@ -192,7 +192,7 @@ class Board extends React.Component {
   // Cell right-click handler
   handleRightClick(e, y, x) {
     e.preventDefault();
-    const {grid,width,height} = this.state;
+    const {grid} = this.state;
     let minesLeft = this.state.minesCount;
     let check = false;
      
@@ -258,10 +258,10 @@ class Board extends React.Component {
       minesCount: minesLeft
     });
   }
-
+ //this function returns the number of mines around a cell when given the coordinates of the cell
   getMineCount( y, x){
     let MineCount = 0;
-    const {grid,width,height} = this.state;
+    const {grid} = this.state;
     if(x === (this.props.height-1)){
       if(grid[y][x-1].isMine) MineCount++;
       if(grid[y+1][x].isMine) MineCount++;
@@ -304,56 +304,59 @@ class Board extends React.Component {
       if(grid[y-1][x+1].isMine) MineCount++;
       if(grid[y-1][x-1].isMine) MineCount++;
       return MineCount;
+    }
+  }
+  
+ //this function returns the number of flags around a cell when given the coordinates of the cell
+  getFlagCount( y, x){
+    let flagCount = 0;
+    const {grid} = this.state;
+    if(x === (this.props.height-1)){
+      if(grid[y][x-1].isFlagged) flagCount++;
+      if(grid[y+1][x].isFlagged) flagCount++;
+      if(grid[y-1][x].isFlagged) flagCount++;
+      if(grid[y+1][x-1].isFlagged) flagCount++;
+      if(grid[y-1][x-1].isFlagged) flagCount++;
+      return flagCount;
+    }
+    if(x === 0){
+      if(grid[y][x+1].isFlagged) flagCount++;
+      if(grid[y+1][x].isFlagged) flagCount++;
+      if(grid[y-1][x].isFlagged) flagCount++;
+      if(grid[y+1][x+1].isFlagged) flagCount++;
+      if(grid[y-1][x+1].isFlagged) flagCount++;
+      return flagCount;
+    }
+    if(y === (this.props.width-1)){
+      if(grid[y][x+1].isFlagged) flagCount++;
+      if(grid[y][x-1].isFlagged) flagCount++;
+      if(grid[y-1][x].isFlagged) flagCount++;
+      if(grid[y-1][x+1].isFlagged) flagCount++;
+      if(grid[y-1][x-1].isFlagged) flagCount++;
+      return flagCount;
+    }
+    if(y === 0){
+      if(grid[y][x+1].isFlagged) flagCount++;
+      if(grid[y][x-1].isFlagged) flagCount++;
+      if(grid[y+1][x].isFlagged) flagCount++;
+      if(grid[y+1][x+1].isFlagged) flagCount++;
+      if(grid[y+1][x-1].isFlagged) flagCount++;
+      return flagCount;
+    }
+    if(x !== (this.props.height-1) && x !== 0 && y !== (this.props.width-1) && y !== 0){
+      if(grid[y][x+1].isFlagged) flagCount++;
+      if(grid[y][x-1].isFlagged) flagCount++;
+      if(grid[y+1][x].isFlagged) flagCount++;
+      if(grid[y-1][x].isFlagged) flagCount++;
+      if(grid[y+1][x+1].isFlagged) flagCount++;
+      if(grid[y+1][x-1].isFlagged) flagCount++;
+      if(grid[y-1][x+1].isFlagged) flagCount++;
+      if(grid[y-1][x-1].isFlagged) flagCount++;
+      return flagCount;
     }
   }
 
-  getFlagCount( y, x){
-    let flagCount = 0;
-    const {grid,width,height} = this.state;
-    if(x === (this.props.height-1)){
-      if(grid[y][x-1].isFlagged) flagCount++;
-      if(grid[y+1][x].isFlagged) flagCount++;
-      if(grid[y-1][x].isFlagged) flagCount++;
-      if(grid[y+1][x-1].isFlagged) flagCount++;
-      if(grid[y-1][x-1].isFlagged) flagCount++;
-      return flagCount;
-    }
-    if(x === 0){
-      if(grid[y][x+1].isFlagged) flagCount++;
-      if(grid[y+1][x].isFlagged) flagCount++;
-      if(grid[y-1][x].isFlagged) flagCount++;
-      if(grid[y+1][x+1].isFlagged) flagCount++;
-      if(grid[y-1][x+1].isFlagged) flagCount++;
-      return flagCount;
-    }
-    if(y === (this.props.width-1)){
-      if(grid[y][x+1].isFlagged) flagCount++;
-      if(grid[y][x-1].isFlagged) flagCount++;
-      if(grid[y-1][x].isFlagged) flagCount++;
-      if(grid[y-1][x+1].isFlagged) flagCount++;
-      if(grid[y-1][x-1].isFlagged) flagCount++;
-      return flagCount;
-    }
-    if(y === 0){
-      if(grid[y][x+1].isFlagged) flagCount++;
-      if(grid[y][x-1].isFlagged) flagCount++;
-      if(grid[y+1][x].isFlagged) flagCount++;
-      if(grid[y+1][x+1].isFlagged) flagCount++;
-      if(grid[y+1][x-1].isFlagged) flagCount++;
-      return flagCount;
-    }
-    if(x !== (this.props.height-1) && x !== 0 && y !== (this.props.width-1) && y !== 0){
-      if(grid[y][x+1].isFlagged) flagCount++;
-      if(grid[y][x-1].isFlagged) flagCount++;
-      if(grid[y+1][x].isFlagged) flagCount++;
-      if(grid[y-1][x].isFlagged) flagCount++;
-      if(grid[y+1][x+1].isFlagged) flagCount++;
-      if(grid[y+1][x-1].isFlagged) flagCount++;
-      if(grid[y-1][x+1].isFlagged) flagCount++;
-      if(grid[y-1][x-1].isFlagged) flagCount++;
-      return flagCount;
-    }
-  }
+
 
   // Rendering functions
   renderBoard() {
@@ -401,7 +404,6 @@ class GridCell {
   }
 }
 
-// Type checking With PropTypes
 Board.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
