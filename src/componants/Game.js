@@ -53,28 +53,35 @@ class Game extends React.Component {
           gameStatus={gameStatus}
         />
         <div className="control-buttons">
-          <button onClick={this.restartGame}>Restart</button>
-
-          <form>
-            <label>Height</label>
-            <input
-              type="number"
-              value={this.state.height}
-              onChange={this.handleChangeHeight}
-            />
-            <label>Width</label>
-            <input
-              type="number"
-              value={this.state.width}
-              onChange={this.handleChangeWidth}
-            />
-            <label>Mines</label>
-            <input
-              type="number"
-              value={this.state.mines}
-              onChange={this.handleChangeMines}
-            />
-          </form>
+          <div className="input-group">
+            <div className="input-container">
+              <label>Height</label>
+              <input
+                type="number"
+                value={this.state.height}
+                onChange={this.handleChangeHeight}
+              />
+            </div>
+            <div className="input-container">
+              <label>Width</label>
+              <input
+                type="number"
+                value={this.state.width}
+                onChange={this.handleChangeWidth}
+              />
+            </div>
+            <div className="input-container">
+              <label>Mines</label>
+              <input
+                type="number"
+                value={this.state.mines}
+                onChange={this.handleChangeMines}
+              />
+            </div>
+            <button className="restart-btn" onClick={this.restartGame}>
+              <span>Restart</span>
+            </button>
+          </div>
         </div>
       </div>
     );
